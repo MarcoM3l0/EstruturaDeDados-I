@@ -21,6 +21,7 @@ public class TesteGenerics {
 		
 		System.out.println(((Aluno) lista.pega(1)).nome.equals("Marco02"));
 //		System.out.println(((Professor) lista.pega(2)).nome.equals("Marco03"));
+		
 		System.out.println();
 		System.out.println("-----------------------------------");
 		
@@ -33,7 +34,7 @@ public class TesteGenerics {
 		}
 		
 		System.out.println();
-		System.out.println("-----------------------------------");
+		System.out.println("----------- Remover ----------------");
 		
 		System.out.println(lista);
 		lista.remover(1);
@@ -43,6 +44,15 @@ public class TesteGenerics {
 		
 		System.out.println(lista);
 		lista.remover(2);
+		
+		System.out.println();
+		System.out.println("-----------------------------------");
+		
+		for(int i = 0; i < 20; i++) {
+			lista.adicionar(new Aluno("MarcoTamanho{" + i + "}", "MarcoTamanho{" + i + "}@email.com"));
+		}
+		
+		System.out.println(lista);
 		
 		System.out.println();
 		System.out.println("-----------------------------------");
