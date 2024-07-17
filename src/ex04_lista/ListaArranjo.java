@@ -1,6 +1,6 @@
 package ex04_lista;
 
-public class ListaArranjo<T> {
+public class ListaArranjo<T> implements ILista<T> {
 	
 	private Object[] elementos = new Object[10];
 	private int tamanho = 0;
