@@ -4,7 +4,7 @@ public class TesteGenerics {
 
 	public static void main(String[] args) {
 		
-		Lista<Aluno> lista = new Lista<Aluno>();
+		ListaArranjo<Aluno> lista = new ListaArranjo<Aluno>();
 		
 		System.out.println("------- Teste Generalização -------");
 		System.out.println();
