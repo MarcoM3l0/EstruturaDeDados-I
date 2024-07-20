@@ -117,7 +117,7 @@ public class Lista {
 			
 			if(elemento.equals(elementos[i])) {
 				remove(i);
-				i = 0;
+				i--;
 			}
 		}
 		
