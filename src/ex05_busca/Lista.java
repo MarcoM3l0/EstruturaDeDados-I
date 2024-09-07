@@ -100,7 +100,7 @@ public class Lista {
 	public int buscaUltimo(Object elemento) {
 		int resultado = -1;
 		
-		for(int i = 0; i < tamanho; i++) {
+		for(int i = tamanho; i >= 0; i--) {
 			
 			if(elemento.equals(elementos[i])) {
 				resultado = i;
@@ -117,7 +117,6 @@ public class Lista {
 			
 			if(elemento.equals(elementos[i])) {
 				remove(i);
-				i = 0;
 			}
 		}
 		
