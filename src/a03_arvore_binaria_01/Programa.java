@@ -1,5 +1,6 @@
 package a03_arvore_binaria_01;
 
+
 public class Programa {
 
 	public static void main(String[] args) {
@@ -18,6 +19,10 @@ public class Programa {
 		Nodo d = arvore.adicionarDireito(divisao, "d");
 		
 		System.out.println(arvore.toStringCentral());
+		
+		Nodo resultado = arvore.busca("*");
+		if(resultado != null)  System.out.println(resultado.getInfo());
+		else System.out.println(resultado);
 		
 	}
 

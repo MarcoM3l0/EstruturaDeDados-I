@@ -27,6 +27,22 @@ public class Arvore {
 		elemento.setDireita(novo);
 		return novo;
 	}
+	
+	public Nodo busca(Object info) {
+		return busca(this.raiz, info);
+		
+	}
+	
+	private Nodo busca(Nodo atual, Object info) {
+		
+		if (atual == null) return null;
+		if(atual.getInfo() == info) return atual;
+		
+		Nodo resultado = busca(atual.getEsquerda(), info);
+		if(resultado != null) return resultado;
+		
+		return busca(atual.getDireita(), info);
+	}
 
 	@Override
 	public String toString() {
