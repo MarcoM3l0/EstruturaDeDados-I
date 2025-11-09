@@ -31,8 +31,4 @@ public class Nodo {
 	public Object getInfo() {
 		return info;
 	}
-
-	
-	
-
 }

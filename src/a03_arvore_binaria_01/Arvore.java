@@ -43,6 +43,85 @@ public class Arvore {
 		
 		return busca(atual.getDireita(), info);
 	}
+	
+	public void remove(Nodo nodo) {
+		
+		if (nodo == null) return;
+		
+		if(this.raiz == nodo) {
+			
+			this.raiz = null;
+			return;
+			
+		}
+		
+		removerAuxiliar(this.raiz, nodo);
+		
+	}
+	
+	private void removerAuxiliar(Nodo atual, Nodo alvo) {
+		
+		if(atual == null) return;
+		
+		if(atual.getEsquerda() == alvo) {
+			atual.setEsquerda(null);
+			return;
+		}
+		
+		if (atual.getDireita() == alvo) {
+			atual.setDireita(null);
+			return;
+		}
+		
+		removerAuxiliar(atual.getEsquerda(), alvo);
+		removerAuxiliar(atual.getDireita(), alvo);
+		
+	}
+	
+	public Nodo irmao(Nodo nodo) {
+		if(nodo == null || this.raiz == nodo) return null;
+		
+		return irmaoAuxiliar(this.raiz, nodo);
+	}
+
+	private Nodo irmaoAuxiliar(Nodo atual, Nodo alvo) {
+		if(atual == null) return null;
+		
+		if(atual.getEsquerda() == alvo) return atual.getDireita();
+		if(atual.getDireita() == alvo) return atual.getEsquerda();
+		
+		Nodo resultado = irmaoAuxiliar(atual.getEsquerda(), alvo);
+		
+		if(resultado != null) return resultado;
+		
+		return irmaoAuxiliar(atual.getDireita(), alvo);
+		
+	}
+	
+	public Arvore copia() {
+		
+		if(this.raiz == null) return new Arvore();
+		
+		Arvore novaArvore = new Arvore();
+		
+		novaArvore.raiz = copiaNodo(this.raiz);
+		
+		return novaArvore;
+	}
+	
+	private Nodo copiaNodo(Nodo atual) {
+		
+		if(atual == null) return null;
+		
+		Nodo nodoNovo = new Nodo(atual.getInfo());
+		
+		nodoNovo.setEsquerda(copiaNodo(atual.getEsquerda()));
+		nodoNovo.setDireita(copiaNodo(atual.getDireita()));
+		
+		return nodoNovo;
+		
+	}
+
 
 	@Override
 	public String toString() {
