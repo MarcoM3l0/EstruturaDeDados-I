@@ -159,6 +159,26 @@ public class ArvoreBinaria {
 		}
 	}
 	
+	public boolean contains(Comparable info) {
+		return contains(info, this.raiz);
+	}
+	
+	private boolean contains(Comparable info, NodoABB nodo) {
+		
+		if(nodo != null) {
+			
+			int comparacao = info.compareTo(nodo.getInfo());
+			
+			if(comparacao == 0) return true;
+			else if(comparacao < 0) return contains(info, nodo.getEsquerdo());
+			else if(comparacao > 0) return contains(info, nodo.getDireito());
+			
+		}
+		
+		return false;
+		
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
