@@ -1,5 +1,157 @@
 package ex_pratica;
 
+import a04_abb_p01.NodoABB;
+
 public class ArvoreBinaria {
+	
+	private NodoABB raiz;
+	
+	public void adiciona(Comparable info) {
+		
+		NodoABB novoNodo = new NodoABB(info);
+		
+		if(this.raiz == null) this.raiz = novoNodo;
+		
+		else {
+			
+			NodoABB nodo = this.raiz;
+			
+			while(nodo != null) {
+				
+				int comparacao = info.compareTo(nodo.getInfo());
+				
+				if(comparacao < 0 ) {
+					
+					if(nodo.getEsquerdo() == null) {
+						nodo.setEsquerdo(novoNodo);
+						break;
+					}
+					
+					else nodo = nodo.getEsquerdo();
+					
+				}else if(comparacao > 0) {
+					
+					if(nodo.getDireito() == null) {
+						nodo.setDireito(novoNodo);
+						break;
+					}
+					
+					else nodo = nodo.getDireito();
+					
+				}else break;
+				
+			}
+			
+		}
+	}
+	
+	private NodoABB adicionar(NodoABB nodo, Comparable info, NodoABB pai) {
+		
+		if(nodo == null) {
+			NodoABB novoNodo = new NodoABB(info);
+			novoNodo.setPai(pai);
+			return novoNodo;
+		}
+		
+		int comparacao = info.compareTo(nodo.getInfo());
+		
+		if(comparacao < 0) nodo.setEsquerdo(adicionar(nodo.getEsquerdo(), info, nodo));
+		else if(comparacao > 0) nodo.setDireito(adicionar(nodo.getDireito(), info, nodo));
+		
+		return nodo;
+		
+	}
+	
+	public NodoABB busca(Comparable info) {
+		
+		return busca(this.raiz, info);
+		
+	}
+	
+	private NodoABB busca(NodoABB nodo, Comparable info) {
+		
+		if(nodo == null) return null;
+		
+		int comparacao = info.compareTo(nodo.getInfo());
+		
+		if(comparacao == 0) return nodo;
+		else if(comparacao < 0) return busca(nodo.getEsquerdo(), info);
+		else return busca(nodo.getDireito(), info);
+		
+	}
+	
+	public void remover(Comparable info) {
+		remover(busca(info));
+	}
+
+	private void remover(NodoABB nodo) {
+		
+		if(nodo == null) return;
+		
+		if(ehFolha(nodo)) {
+			descarta(nodo);
+		}
+		
+		else if(temApenasUmFilho(nodo)) {
+			NodoABB filhoDoRemovido = pegaUnicoFilho(nodo);
+			NodoABB paiDoRemovido = nodo.getPai();
+			paiDoRemovido.trocaFilho(nodo, filhoDoRemovido);
+		}
+		
+		else {
+			NodoABB maiorEsquerdo = nodo.getEsquerdo().getMaior();
+			nodo.setInfo(maiorEsquerdo.getInfo());
+			remover(maiorEsquerdo);
+		}
+		
+	}
+
+	private NodoABB pegaUnicoFilho(NodoABB nodo) {
+		return nodo.getEsquerdo() != null ? nodo.getEsquerdo() : nodo.getDireito();
+	}
+
+	private boolean temApenasUmFilho(NodoABB nodo) {
+		return (nodo.getEsquerdo() == null) != (nodo.getDireito() == null) ;
+	}
+
+	private void descarta(NodoABB nodo) {
+		NodoABB pai = nodo.getPai();
+		
+		if(pai == null) this.raiz = null;
+		
+		else {
+			if(pai.getEsquerdo() == nodo) pai.setEsquerdo(null);
+			else pai.setDireito(null);
+		}
+		
+	}
+
+	private boolean ehFolha(NodoABB nodo) {
+		return (nodo.getEsquerdo() == null) && (nodo.getDireito() == null);
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		montaStringPreAEsquerda(this.raiz, sb, 0);
+		return sb.toString();
+	}
+
+
+	private void montaStringPreAEsquerda(NodoABB nodo, StringBuilder sb, int nivel) {
+		if(nodo != null) {
+			
+			
+			sb.append("\r\n");
+			
+			for(int i = 0; i < nivel; i++) sb.append("  ");
+			
+			sb.append(String.valueOf(nodo.getInfo()));
+			montaStringPreAEsquerda(nodo.getEsquerdo(), sb, nivel +1);
+			montaStringPreAEsquerda(nodo.getDireito(), sb, nivel +1);
+			
+			
+		}
+	}
 
 }

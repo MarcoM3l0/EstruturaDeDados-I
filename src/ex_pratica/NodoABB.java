@@ -42,6 +42,19 @@ public class NodoABB {
 	public void setEsquerdo(NodoABB esquerdo) {
 		this.esquerdo = esquerdo;
 	}
+	
+	public void trocaFilho(NodoABB removido, NodoABB novo) {
+		if(removido == this.esquerdo) setEsquerdo(novo);
+		else if(removido == this.direito) setDireito(novo);
+	}
+	
+	public NodoABB getMaior() {
+		NodoABB atual = this;
+
+		while(atual.getDireito() != null) atual = atual.getDireito();
+		
+		return atual;
+	}
 
 	@Override
 	public String toString() {
