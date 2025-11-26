@@ -59,7 +59,6 @@ public class ArvoreBinaria {
 	public void remover(NodoABB nodo) {
 	    if (nodo == null) return;
 
-	    // CASO 1: Nó é folha
 	    if (nodo.getEsquerdo() == null && nodo.getDireito() == null) {
 	        NodoABB pai = nodo.getPai();
 	        if (pai == null) {
@@ -70,7 +69,6 @@ public class ArvoreBinaria {
 	        }
 	    }
 
-	    // CASO 2: Tem apenas um filho
 	    else if (nodo.getEsquerdo() == null || nodo.getDireito() == null) {
 	        NodoABB filho = (nodo.getEsquerdo() != null) ? nodo.getEsquerdo() : nodo.getDireito();
 	        NodoABB pai = nodo.getPai();
@@ -85,7 +83,6 @@ public class ArvoreBinaria {
 	        }
 	    }
 
-	    // CASO 3: Tem dois filhos
 	    else {
 	        NodoABB substituto = nodo.getEsquerdo().getMaior();
 	        nodo.setInfo(substituto.getInfo());
