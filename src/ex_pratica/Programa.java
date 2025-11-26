@@ -17,6 +17,14 @@ public class Programa {
 		abb.adiciona(180);
 		abb.adiciona(5);
 		
+		System.out.println("Original: ");
+		System.out.println(abb.toString());
+		
+		System.out.println("Clone: ");
+		
+		ArvoreBinaria abbClone = abb.clone();
+	
+		System.out.println(abbClone.toString());
 
 		System.out.println("Antes de remover 20: ");
 		System.out.println(abb.toString());

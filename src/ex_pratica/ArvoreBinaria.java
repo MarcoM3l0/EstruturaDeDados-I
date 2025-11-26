@@ -178,11 +178,40 @@ public class ArvoreBinaria {
 		return false;
 		
 	}
+	
+	public ArvoreBinaria clone() {
+		ArvoreBinaria novaArvore = new ArvoreBinaria();
+		
+		novaArvore.raiz = cloneNodo(this.raiz, null);
+		
+		return novaArvore;
+	}
 
+	
+
+	private NodoABB cloneNodo(NodoABB nodo, NodoABB pai) {
+		if(nodo == null) return null;
+		
+		NodoABB novo = new NodoABB(nodo.getInfo());
+		novo.setPai(pai);
+		
+		novo.setEsquerdo(cloneNodo(nodo.getEsquerdo(), novo));
+		novo.setDireito(cloneNodo(nodo.getDireito(), novo));
+		
+		return novo;
+		
+	}
+
+	public String toStringDESC() {
+		StringBuilder sb = new StringBuilder();
+		montaString(this.raiz, sb);
+		return sb.toString();
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		montaString(this.raiz, sb);
+		montaStringPreAEsquerda(this.raiz, sb, 0);
 		return sb.toString();
 	}
 	
