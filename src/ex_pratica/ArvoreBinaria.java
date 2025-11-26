@@ -182,10 +182,24 @@ public class ArvoreBinaria {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		montaStringPreAEsquerda(this.raiz, sb, 0);
+		montaString(this.raiz, sb);
 		return sb.toString();
 	}
+	
+	
 
+	private void montaString(NodoABB nodo, StringBuilder sb) {
+		
+		if(nodo != null) {
+			
+			
+			montaString(nodo.getDireito(), sb);
+			sb.append(nodo.getInfo() + "\r\n");
+			montaString(nodo.getEsquerdo(), sb);
+			
+		}
+		
+	}
 
 	private void montaStringPreAEsquerda(NodoABB nodo, StringBuilder sb, int nivel) {
 		if(nodo != null) {

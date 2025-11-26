@@ -31,7 +31,7 @@ public class Programa {
 
 		System.out.println(abb.toString());
 		
-		abb.posOrder(abb.busca(37));
+		abb.isOrder(abb.busca(37));
 		
 	}
 
