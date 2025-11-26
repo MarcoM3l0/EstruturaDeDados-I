@@ -26,6 +26,13 @@ public class Programa {
 		System.out.println("Depois de remover 20: ");
 		System.out.println(abb.toString());
 		
+		abb.adiciona(20);
+		
+
+		System.out.println(abb.toString());
+		
+		abb.posOrder(abb.busca(37));
+		
 	}
 
 }

@@ -130,6 +130,35 @@ public class ArvoreBinaria {
 		return (nodo.getEsquerdo() == null) && (nodo.getDireito() == null);
 	}
 	
+	public boolean isEmpty() {
+		return this.raiz == null;
+	}
+	
+	public void isOrder(NodoABB nodo) {
+		if(nodo != null) {
+			
+			isOrder(nodo.getEsquerdo());
+			System.out.println(nodo.getInfo() + " ");
+			isOrder(nodo.getDireito());
+		}
+	}
+	
+	public void preOrder(NodoABB nodo) {
+		if(nodo != null) {
+			System.out.println(nodo.getInfo() + " ");
+			preOrder(nodo.getEsquerdo());
+			preOrder(nodo.getDireito());
+		}
+	}
+	
+	public void posOrder(NodoABB nodo) {
+		if(nodo != null) {
+			posOrder(nodo.getEsquerdo());
+			posOrder(nodo.getDireito());
+			System.out.println(nodo.getInfo() + " ");
+		}
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
