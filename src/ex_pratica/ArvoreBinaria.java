@@ -8,43 +8,31 @@ public class ArvoreBinaria {
 	
 	public void adiciona(Comparable info) {
 		
-		NodoABB novoNodo = new NodoABB(info);
-		
-		if(this.raiz == null) this.raiz = novoNodo;
-		
-		else {
-			
-			NodoABB nodo = this.raiz;
-			
-			while(nodo != null) {
-				
-				int comparacao = info.compareTo(nodo.getInfo());
-				
-				if(comparacao < 0 ) {
-					
-					if(nodo.getEsquerdo() == null) {
-						nodo.setEsquerdo(novoNodo);
-						break;
-					}
-					
-					else nodo = nodo.getEsquerdo();
-					
-				}else if(comparacao > 0) {
-					
-					if(nodo.getDireito() == null) {
-						nodo.setDireito(novoNodo);
-						break;
-					}
-					
-					else nodo = nodo.getDireito();
-					
-				}else break;
-				
-			}
-			
-		}
+		this.raiz = adiciona(this.raiz, info);
 	}
 	
+	private NodoABB adiciona(NodoABB nodo, Comparable info) {
+		
+		if(nodo == null) return new NodoABB(info);
+		
+		int comparacao = info.compareTo(nodo.getInfo());
+
+		if(comparacao < 0 ) {
+			
+			NodoABB nodoEsq = adiciona(nodo.getEsquerdo(), info);
+			nodo.setEsquerdo(nodoEsq);
+			
+		}
+		if(comparacao > 0 ) {
+			
+			NodoABB nodoDir = adiciona(nodo.getDireito(), info);
+			nodo.setDireito(nodoDir);
+			
+		}
+		
+		return nodo;
+	}
+
 	private NodoABB adicionar(NodoABB nodo, Comparable info, NodoABB pai) {
 		
 		if(nodo == null) {
