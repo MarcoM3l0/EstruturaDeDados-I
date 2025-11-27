@@ -193,6 +193,16 @@ public class ArvoreBinaria {
 	public NodoABB getRoot() {
 		return this.raiz;
 	}
+	
+	public int getSize() {
+		return getSize(this.raiz);
+	}
+
+	private int getSize(NodoABB nodo) {
+		if(nodo == null) return 0;
+		
+		return 1 + getSize(nodo.getEsquerdo()) + getSize(nodo.getDireito());
+	}
 
 	public String toStringDESC() {
 		StringBuilder sb = new StringBuilder();

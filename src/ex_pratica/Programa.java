@@ -18,6 +18,9 @@ public class Programa {
 		abb.adiciona(5);
 		
 		System.out.println("Original: ");
+		System.out.println(abb.getSize());
+
+		System.out.println("Original: ");
 		System.out.println(abb.toString());
 		
 		System.out.println("Clone: ");
