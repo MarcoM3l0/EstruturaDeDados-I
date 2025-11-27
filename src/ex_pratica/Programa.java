@@ -18,6 +18,12 @@ public class Programa {
 		abb.adiciona(5);
 
 		System.out.println("Size: ");
+		System.out.println(abb.nivel(37));
+		System.out.println(abb.nivel(20));
+		System.out.println(abb.nivel(10));
+		
+		System.out.println();
+		System.out.println("Size: ");
 		System.out.println(abb.getSize());
 		
 		System.out.println();

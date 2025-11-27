@@ -214,6 +214,21 @@ public class ArvoreBinaria {
 		
 		return count;
 	}
+	
+	public int nivel(Comparable info) {
+		return nivel(this.raiz, info, 1);
+	}
+
+	private int nivel(NodoABB nodo, Comparable info, int nivelAtual) {
+		
+		if(nodo == null) return 0;
+		
+		int comparacao = info.compareTo(nodo.getInfo());
+		
+		if(comparacao == 0) return nivelAtual;
+		if(comparacao < 0)  return nivel(nodo.getEsquerdo(), info, nivelAtual + 1);
+		return nivel(nodo.getDireito(), info, nivelAtual + 1);
+	}
 
 	public String toStringDESC() {
 		StringBuilder sb = new StringBuilder();
