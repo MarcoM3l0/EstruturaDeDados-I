@@ -58,6 +58,14 @@ public class NodoABB {
 		
 		return atual;
 	}
+	
+	public NodoABB getMenor() {
+		NodoABB atual = this;
+		
+		while(atual.getEsquerdo() != null) atual = atual.getEsquerdo();
+		
+		return atual;
+	}
 
 	@Override
 	public String toString() {

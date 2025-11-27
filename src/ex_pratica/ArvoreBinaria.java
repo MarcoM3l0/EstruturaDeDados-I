@@ -229,6 +229,62 @@ public class ArvoreBinaria {
 		if(comparacao < 0)  return nivel(nodo.getEsquerdo(), info, nivelAtual + 1);
 		return nivel(nodo.getDireito(), info, nivelAtual + 1);
 	}
+	
+	public int altura() {
+		return altura(this.raiz);
+	}
+
+	private int altura(NodoABB nodo) {
+		
+		if(nodo == null) return -1;
+		
+		int altEsq = altura(nodo.getEsquerdo());
+		int altDir = altura(nodo.getDireito());
+		
+		if(altEsq > altDir) {
+			return 1 + altEsq;
+		}else {
+			return 1 + altDir;
+		}
+	}
+	
+	public NodoABB sucessor(Comparable info) {
+		NodoABB nodo = busca(info);
+		
+		if(nodo == null) return null;
+		
+		if(nodo.getDireito() != null) return nodo.getDireito().getMenor();
+		
+		NodoABB atual = nodo;
+		NodoABB pai = atual.getPai();
+		
+		while(pai != null && atual == pai.getDireito()) {
+			atual = pai;
+			pai = pai.getPai();
+		}
+		
+		return (pai == null) ? null : pai;
+			
+	}
+	
+	public NodoABB antecessor(Comparable info) {
+		
+		NodoABB nodo = busca(info);
+		
+		if(nodo == null) return null;
+		
+		if(nodo.getEsquerdo() != null) return nodo.getEsquerdo().getMaior();
+		
+		NodoABB atual = nodo;
+		NodoABB pai = atual.getPai();
+		
+		while(pai != null && atual == pai.getEsquerdo()) {
+			atual = pai;
+			pai = pai.getPai();
+		}
+		
+		return (pai == null) ? null : pai;
+	}
 
 	public String toStringDESC() {
 		StringBuilder sb = new StringBuilder();

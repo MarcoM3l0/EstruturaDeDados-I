@@ -16,8 +16,23 @@ public class Programa {
 		abb.adiciona(30);
 		abb.adiciona(180);
 		abb.adiciona(5);
+		abb.adiciona(6);
+		abb.adiciona(4);
+		
 
-		System.out.println("Size: ");
+		System.out.println("Sucessor");
+		System.out.println(abb.sucessor(37));
+		System.out.println();
+		
+		System.out.println("antecessor");
+		System.out.println(abb.antecessor(37));
+		System.out.println();
+		
+		System.out.println("Altura");
+		System.out.println(abb.altura());
+		System.out.println();
+
+		System.out.println("Nivel: ");
 		System.out.println(abb.nivel(37));
 		System.out.println(abb.nivel(20));
 		System.out.println(abb.nivel(10));
