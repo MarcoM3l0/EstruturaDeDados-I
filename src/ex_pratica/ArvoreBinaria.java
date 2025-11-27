@@ -203,6 +203,17 @@ public class ArvoreBinaria {
 		
 		return 1 + getSize(nodo.getEsquerdo()) + getSize(nodo.getDireito());
 	}
+	
+	public int grau(NodoABB nodo) {
+		if(nodo == null) return 0;
+		
+		int count = 0;
+
+		if(nodo.getEsquerdo() != null) count++;
+		if(nodo.getDireito() != null) count++;
+		
+		return count;
+	}
 
 	public String toStringDESC() {
 		StringBuilder sb = new StringBuilder();

@@ -16,10 +16,18 @@ public class Programa {
 		abb.adiciona(30);
 		abb.adiciona(180);
 		abb.adiciona(5);
-		
-		System.out.println("Original: ");
-		System.out.println(abb.getSize());
 
+		System.out.println("Size: ");
+		System.out.println(abb.getSize());
+		
+		System.out.println();
+		System.out.println("Grau do no: ");
+		System.out.println(abb.grau(abb.busca(10)));
+		System.out.println(abb.grau(abb.busca(5)));
+		System.out.println(abb.grau(abb.busca(20)));
+		System.out.println(abb.grau(abb.busca(37)));
+
+		System.out.println();
 		System.out.println("Original: ");
 		System.out.println(abb.toString());
 		
