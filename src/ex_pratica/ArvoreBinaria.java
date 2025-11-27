@@ -189,6 +189,10 @@ public class ArvoreBinaria {
 		return novo;
 		
 	}
+	
+	public NodoABB getRoot() {
+		return this.raiz;
+	}
 
 	public String toStringDESC() {
 		StringBuilder sb = new StringBuilder();
